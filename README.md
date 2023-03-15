@@ -1,6 +1,7 @@
 # Data Imputers
 
 [![CI](https://github.com/pharo-ai/data-imputers/actions/workflows/ci.yml/badge.svg)](https://github.com/pharo-ai/data-imputers/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/pharo-ai/data-imputers/badge.svg?branch=master)](https://coveralls.io/github/pharo-ai/data-imputers?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PharoAI/data-imputers/master/LICENSE)
 [![Pharo version](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo version](https://img.shields.io/badge/Pharo-10-%23aac9ff.svg)](https://pharo.org/download)
