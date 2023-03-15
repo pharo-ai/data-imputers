@@ -1,7 +1,7 @@
 Class {
 	#name : #AIAverageImputerStrategy,
 	#superclass : #AIAbstractImputerStrategy,
-	#category : #'AI-Imputers'
+	#category : #'AI-DataImputers'
 }
 
 { #category : #operation }

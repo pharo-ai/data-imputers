@@ -5,7 +5,7 @@ Class {
 		'statistics',
 		'replacementStrategy'
 	],
-	#category : #'AI-Imputers'
+	#category : #'AI-DataImputers'
 }
 
 { #category : #api }

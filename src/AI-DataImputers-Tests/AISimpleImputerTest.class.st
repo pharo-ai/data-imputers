@@ -8,7 +8,7 @@ Class {
 		'collection',
 		'imputer'
 	],
-	#category : #'AI-Imputers-Tests'
+	#category : #'AI-DataImputers-Tests'
 }
 
 { #category : #running }
