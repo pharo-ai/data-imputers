@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'statistics',
-		'replacementStrategy'
+		'replacementStrategy',
+		'missingValue'
 	],
 	#category : #'AI-DataImputers'
 }
@@ -28,6 +29,18 @@ AISimpleImputer >> initialize [
 
 	super initialize.
 	self useAverage
+]
+
+{ #category : #accessing }
+AISimpleImputer >> missingValue [
+
+	^ missingValue
+]
+
+{ #category : #accessing }
+AISimpleImputer >> missingValue: anObject [
+
+	missingValue := anObject
 ]
 
 { #category : #accessing }
@@ -59,29 +72,33 @@ AISimpleImputer >> transform: aCollection [
 
 	statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
 
-	^ aCollection collect: [ :subcoll | subcoll collectWithIndex: [ :elem :index | elem ifNil: [ statistics at: index ] ] ]
+	^ aCollection collect: [ :subcoll |
+		  subcoll collectWithIndex: [ :elem :index |
+			  elem = self missingValue
+				  ifTrue: [ statistics at: index ]
+				  ifFalse: [ elem ] ] ]
 ]
 
 { #category : #options }
 AISimpleImputer >> useAverage [
 
-	replacementStrategy := AIAverageImputerStrategy new
+	replacementStrategy := AIAverageImputerStrategy imputer: self
 ]
 
 { #category : #options }
 AISimpleImputer >> useConstant: aNumber [
 
-	replacementStrategy := AIConstantImputerStrategy constant: aNumber
+	replacementStrategy := AIConstantImputerStrategy imputer: self constant: aNumber
 ]
 
 { #category : #options }
 AISimpleImputer >> useMedian [
 
-	replacementStrategy := AIMedianImputerStrategy new
+	replacementStrategy := AIMedianImputerStrategy imputer: self
 ]
 
 { #category : #options }
 AISimpleImputer >> useMostFrequent [
 
-	replacementStrategy := AIMostFrequentImputerStrategy new
+	replacementStrategy := AIMostFrequentImputerStrategy imputer: self
 ]

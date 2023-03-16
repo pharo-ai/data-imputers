@@ -66,6 +66,14 @@ AISimpleImputerTest >> testFitMostFrequent [
 ]
 
 { #category : #tests }
+AISimpleImputerTest >> testMissingValue [
+
+	collection := #( #( 7 2 5 6 ) #( 7 false 5 9 ) #( 10 2 false 6 ) ).
+	imputer missingValue: false.
+	self assert: (imputer fitAndTransform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
+]
+
+{ #category : #tests }
 AISimpleImputerTest >> testTransformAverage [
 
 	imputer

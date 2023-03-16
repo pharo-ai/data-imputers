@@ -8,9 +8,9 @@ Class {
 }
 
 { #category : #accessing }
-AIConstantImputerStrategy class >> constant: aNumber [
+AIConstantImputerStrategy class >> imputer: anImputer constant: aNumber [
 
-	^ self new
+	^ (self imputer: anImputer)
 		  constant: aNumber;
 		  yourself
 ]

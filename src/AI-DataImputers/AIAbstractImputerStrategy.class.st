@@ -1,8 +1,19 @@
 Class {
 	#name : #AIAbstractImputerStrategy,
 	#superclass : #Object,
+	#instVars : [
+		'imputer'
+	],
 	#category : #'AI-DataImputers'
 }
+
+{ #category : #accessing }
+AIAbstractImputerStrategy class >> imputer: anImputer [
+
+	^ self new
+		  imputer: anImputer;
+		  yourself
+]
 
 { #category : #operation }
 AIAbstractImputerStrategy >> fit: aCollection [
@@ -10,11 +21,23 @@ AIAbstractImputerStrategy >> fit: aCollection [
 	^ (1 to: aCollection first size) collect: [ :index |
 		  self getValuesFrom: (aCollection
 				   collect: [ :array | array at: index ]
-				   thenReject: #isNil) ]
+				   thenReject: [ :element | element = self imputer missingValue ]) ]
 ]
 
 { #category : #operation }
 AIAbstractImputerStrategy >> getValuesFrom: aCollection [
 
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+AIAbstractImputerStrategy >> imputer [
+
+	^ imputer
+]
+
+{ #category : #accessing }
+AIAbstractImputerStrategy >> imputer: anObject [
+
+	imputer := anObject
 ]
