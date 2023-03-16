@@ -1,11 +1,11 @@
 Class {
-	#name : #AIAverageImputerStrategy,
+	#name : #AIMedianImputerStrategy,
 	#superclass : #AIAbstractImputerStrategy,
 	#category : #'AI-DataImputers'
 }
 
 { #category : #operation }
-AIAverageImputerStrategy >> getValuesFrom: aCollection [
+AIMedianImputerStrategy >> getValuesFrom: aCollection [
 
-	^ aCollection average
+	^ aCollection median
 ]

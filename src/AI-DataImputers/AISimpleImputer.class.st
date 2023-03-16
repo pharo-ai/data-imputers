@@ -39,7 +39,7 @@ AISimpleImputer >> statistics: anObject [
 	statistics := anObject
 ]
 
-{ #category : #operations }
+{ #category : #api }
 AISimpleImputer >> transform: aCollection [
 
 	statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
@@ -51,4 +51,22 @@ AISimpleImputer >> transform: aCollection [
 AISimpleImputer >> useAverage [
 
 	replacementStrategy := AIAverageImputerStrategy new
+]
+
+{ #category : #options }
+AISimpleImputer >> useConstant: aNumber [
+
+	replacementStrategy := AIConstantImputerStrategy constant: aNumber
+]
+
+{ #category : #options }
+AISimpleImputer >> useMedian [
+
+	replacementStrategy := AIMedianImputerStrategy new
+]
+
+{ #category : #options }
+AISimpleImputer >> useMostFrequent [
+
+	replacementStrategy := AIMostFrequentImputerStrategy new
 ]
