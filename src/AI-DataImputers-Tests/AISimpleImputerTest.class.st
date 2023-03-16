@@ -20,6 +20,12 @@ AISimpleImputerTest >> setUp [
 ]
 
 { #category : #tests }
+AISimpleImputerTest >> testFitAndTransform [
+
+	self assert: (imputer fitAndTransform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
+]
+
+{ #category : #tests }
 AISimpleImputerTest >> testFitAverage [
 
 	imputer

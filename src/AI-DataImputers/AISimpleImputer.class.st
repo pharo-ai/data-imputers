@@ -16,6 +16,21 @@ AISimpleImputer >> fit: aCollection [
 ]
 
 { #category : #accessing }
+AISimpleImputer >> fitAndTransform: aCollection [
+
+	^ self
+		  fit: aCollection;
+		  transform: aCollection
+]
+
+{ #category : #initialization }
+AISimpleImputer >> initialize [
+
+	super initialize.
+	self useAverage
+]
+
+{ #category : #accessing }
 AISimpleImputer >> replacementStrategy [
 
 	^ replacementStrategy
