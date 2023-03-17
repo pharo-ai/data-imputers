@@ -1,3 +1,6 @@
+"
+I am a strategy that will use the median value of a 2D collection column to define a fit value of imputers.
+"
 Class {
 	#name : #AIMedianImputerStrategy,
 	#superclass : #AIAbstractImputerStrategy,

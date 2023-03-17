@@ -1,3 +1,6 @@
+"
+I am a strategy that will use a constant value to define a fit value of imputers.
+"
 Class {
 	#name : #AIConstantImputerStrategy,
 	#superclass : #AIAbstractImputerStrategy,

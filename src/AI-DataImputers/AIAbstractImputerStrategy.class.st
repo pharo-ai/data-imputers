@@ -1,3 +1,6 @@
+"
+I am an abstract stategy. My subclasses will define how a `AISimpleImputer` will compute the missing values of a collection while calling `AISimpleImputer>>#fit:`.
+"
 Class {
 	#name : #AIAbstractImputerStrategy,
 	#superclass : #Object,

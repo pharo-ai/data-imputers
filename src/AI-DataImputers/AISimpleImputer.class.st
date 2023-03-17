@@ -1,3 +1,67 @@
+"
+I am a simple imputer whose goal is to fill missing values in 2D collections.
+
+To use me you need 3 steps. The first one is to define the value to replace the missing values with:
+- `#useAverage` (Default value)
+- `#useMedian`
+- `#useMostFrequent`
+- `#useContant:`
+
+Then you need to use `#fit:` to allow me to compute the missing value. Once it is done, you can use `#statistics` to get those values.
+
+Finally you can use `#transform:` to fill the missing values of a 2D collection. 
+
+An alternative is to use `#fitAndTransform:` if you want to fill the missing values using the same collection to compute them.
+
+Example:
+
+```st
+	| collection|
+	collection := #( #( 7 2 5 6 ) #( 7 nil 5 9 ) #( 10 2 nil 6 ) ).
+	
+	AISimpleImputer new
+		useMostFrequent;
+		fit: collection.
+
+	imputer transform: collection ""#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )""
+```
+
+or
+
+```st
+	AISimpleImputer new
+		useMostFrequent;
+		fitAndTransform: #( #( 7 2 5 6 ) #( 7 nil 5 9 ) #( 10 2 nil 6 ) ) ""#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )""
+```
+
+I can also be used with a `DataFrame`:
+
+```st
+	AISimpleImputer new
+		useMostFrequent;
+		fitAndTransform: (DataFrame withRows: #( #( 7 2 5 6 ) #( 7 nil 5 9 ) #( 10 2 nil 6 ) )) 
+```
+
+It is also possible to change the missing value in case you want to replace something else than nil values:
+
+```st
+	AISimpleImputer new
+		useMostFrequent;
+		missingValue: false;
+		fitAndTransform: #( #( 7 2 5 6 ) #( 7 false 5 9 ) #( 10 2 false 6 ) ) ""#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )""
+```
+
+Internal Representation and Key Implementation Points.
+
+    Instance Variables
+- missingValue:				<Object> 			The missing value to replace. By default: nil
+- replacementStrategy:		<aStrategy>		The replacement strategy to use to fill missing values. By default: `AIAverageImputerStrategy`
+- statistics:					<aCollection>	The list of values to use to replace missing values computed after calling `#fit:`
+
+Depending on what the user want to use to fill missing values, I use a replacement strategy that is here to compute the statistics when calling `#fit:`
+
+
+"
 Class {
 	#name : #AISimpleImputer,
 	#superclass : #Object,
