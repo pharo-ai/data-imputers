@@ -20,6 +20,13 @@ AISimpleImputerTest >> setUp [
 ]
 
 { #category : #tests }
+AISimpleImputerTest >> testFit1DColl [
+
+	collection := #( 1 2 nil ).
+	self should: [ imputer fit: collection ] raise: AssertionFailure
+]
+
+{ #category : #tests }
 AISimpleImputerTest >> testFitAndTransform [
 
 	self assert: (imputer fitAndTransform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
@@ -71,6 +78,13 @@ AISimpleImputerTest >> testMissingValue [
 	collection := #( #( 7 2 5 6 ) #( 7 false 5 9 ) #( 10 2 false 6 ) ).
 	imputer missingValue: false.
 	self assert: (imputer fitAndTransform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
+]
+
+{ #category : #tests }
+AISimpleImputerTest >> testTransform1DColl [
+
+	collection := #( 1 2 nil ).
+	self should: [ imputer fitAndTransform: collection ] raise: AssertionFailure
 ]
 
 { #category : #tests }

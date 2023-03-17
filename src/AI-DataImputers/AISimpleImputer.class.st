@@ -9,9 +9,17 @@ Class {
 	#category : #'AI-DataImputers'
 }
 
+{ #category : #private }
+AISimpleImputer >> ensureIs2D: aCollection [
+
+	self assert: aCollection isCollection description: 'Imputer can only work on 2D collections.'.
+	aCollection do: [ :coll | self assert: coll isCollection description: 'Imputer can only work on 2D collections.' ]
+]
+
 { #category : #api }
 AISimpleImputer >> fit: aCollection [
 
+	self ensureIs2D: aCollection.
 	aCollection ifEmpty: [ self error: 'Cannot fit empty collection.' ].
 	self statistics: (self replacementStrategy fit: aCollection)
 ]
@@ -70,6 +78,7 @@ AISimpleImputer >> statistics: anObject [
 { #category : #api }
 AISimpleImputer >> transform: aCollection [
 
+	self ensureIs2D: aCollection.
 	self statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
 
 	^ aCollection collect: [ :subcoll |
