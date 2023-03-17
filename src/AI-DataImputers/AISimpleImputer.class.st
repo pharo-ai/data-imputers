@@ -73,7 +73,7 @@ AISimpleImputer >> transform: aCollection [
 	statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
 
 	^ aCollection collect: [ :subcoll |
-		  subcoll collectWithIndex: [ :elem :index |
+		  subcoll withIndexCollect: [ :elem :index |
 			  elem = self missingValue
 				  ifTrue: [ statistics at: index ]
 				  ifFalse: [ elem ] ] ]

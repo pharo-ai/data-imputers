@@ -19,9 +19,11 @@ AIAbstractImputerStrategy class >> imputer: anImputer [
 AIAbstractImputerStrategy >> fit: aCollection [
 
 	^ (1 to: aCollection first size) collect: [ :index |
-		  self getValuesFrom: (aCollection
-				   collect: [ :array | array at: index ]
-				   thenReject: [ :element | element = self imputer missingValue ]) ]
+		  | columnWithoutMissingValue |
+		  columnWithoutMissingValue := aCollection asArray
+			                               collect: [ :array | array at: index ]
+			                               thenReject: [ :element | element = self imputer missingValue ].
+		  self getValuesFrom: columnWithoutMissingValue ]
 ]
 
 { #category : #operation }
