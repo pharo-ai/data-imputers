@@ -21,9 +21,8 @@ Example:
 	
 	AISimpleImputer new
 		useMostFrequent;
-		fit: collection.
-
-	imputer transform: collection ""#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )""
+		fit: collection;
+		transform: collection ""#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )""
 ```
 
 or
