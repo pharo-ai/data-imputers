@@ -40,5 +40,6 @@ AIConstantImputerStrategy >> fit: aCollection [
 AIConstantImputerStrategy >> getValuesFrom: aCollection [
 	"#fit: does not need it here."
 
+	<ignoreForCoverage>
 	self shouldNotImplement
 ]
