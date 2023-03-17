@@ -13,7 +13,7 @@ Class {
 AISimpleImputer >> fit: aCollection [
 
 	aCollection ifEmpty: [ self error: 'Cannot fit empty collection.' ].
-	statistics := replacementStrategy fit: aCollection
+	self statistics: (self replacementStrategy fit: aCollection)
 ]
 
 { #category : #accessing }
@@ -70,7 +70,7 @@ AISimpleImputer >> statistics: anObject [
 { #category : #api }
 AISimpleImputer >> transform: aCollection [
 
-	statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
+	self statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
 
 	^ aCollection collect: [ :subcoll |
 		  subcoll withIndexCollect: [ :elem :index |
@@ -82,23 +82,23 @@ AISimpleImputer >> transform: aCollection [
 { #category : #options }
 AISimpleImputer >> useAverage [
 
-	replacementStrategy := AIAverageImputerStrategy imputer: self
+	self replacementStrategy: (AIAverageImputerStrategy imputer: self)
 ]
 
 { #category : #options }
 AISimpleImputer >> useConstant: aNumber [
 
-	replacementStrategy := AIConstantImputerStrategy imputer: self constant: aNumber
+	self replacementStrategy: (AIConstantImputerStrategy imputer: self constant: aNumber)
 ]
 
 { #category : #options }
 AISimpleImputer >> useMedian [
 
-	replacementStrategy := AIMedianImputerStrategy imputer: self
+	self replacementStrategy: (AIMedianImputerStrategy imputer: self)
 ]
 
 { #category : #options }
 AISimpleImputer >> useMostFrequent [
 
-	replacementStrategy := AIMostFrequentImputerStrategy imputer: self
+	self replacementStrategy: (AIMostFrequentImputerStrategy imputer: self)
 ]
