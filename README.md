@@ -27,7 +27,7 @@ If you want to add a dependency on this project to your project, include the fol
 
 ```Smalltalk
 spec
-  baseline: 'AIDataImputerss'
+  baseline: 'AIDataImputers'
   with: [ spec repository: 'github://pharo-ai/data-imputers/src' ].
 ```
 
