@@ -44,8 +44,8 @@ collection := #( #( 7 2 5 6 ) #( 7 nil 5 9 ) #( 10 2 nil 6 ) ).
 AISimpleImputer new
 	useMostFrequent;
 	fit: collection;
-  statistics; "#( 7 2 5 6 )"
-  transform: collection "#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )"
+	statistics; "#( 7 2 5 6 )"
+	transform: collection "#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )"
 ```
 
 I can also be used to fill missing values of a [`DataFrame`](https://github.com/PolyMathOrg/DataFrame):
@@ -81,8 +81,8 @@ collection := #( #( 7 2 5 6 ) #( 7 nil 5 9 ) #( 10 2 nil 6 ) ).
 AISimpleImputer new
 	useMostFrequent;
 	fit: collection;
-  statistics; "#( 7 2 5 6 )"
-  transform: collection "#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )"
+	statistics; "#( 7 2 5 6 )"
+	transform: collection "#( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )"
 ```
 
 or
