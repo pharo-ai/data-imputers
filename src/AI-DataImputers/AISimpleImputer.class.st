@@ -72,6 +72,38 @@ Class {
 	#category : #'AI-DataImputers'
 }
 
+{ #category : #'instance creation' }
+AISimpleImputer class >> average [
+
+	^ self new
+		  useAverage;
+		  yourself
+]
+
+{ #category : #'instance creation' }
+AISimpleImputer class >> constant: aNumber [
+
+	^ self new
+		  useConstant: aNumber;
+		  yourself
+]
+
+{ #category : #'instance creation' }
+AISimpleImputer class >> median [
+
+	^ self new
+		  useMedian;
+		  yourself
+]
+
+{ #category : #'instance creation' }
+AISimpleImputer class >> mostFrequent [
+
+	^ self new
+		  useMostFrequent;
+		  yourself
+]
+
 { #category : #private }
 AISimpleImputer >> ensureIs2D: aCollection [
 

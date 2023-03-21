@@ -90,9 +90,8 @@ AISimpleImputerTest >> testTransform1DColl [
 { #category : #tests }
 AISimpleImputerTest >> testTransformAverage [
 
-	imputer
-		useAverage;
-		fit: collection.
+	imputer := AISimpleImputer average.
+	imputer fit: collection.
 
 	self assert: (imputer transform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
 ]
@@ -100,19 +99,17 @@ AISimpleImputerTest >> testTransformAverage [
 { #category : #tests }
 AISimpleImputerTest >> testTransformConstant [
 
-	imputer
-		useConstant: 10;
-		fit: collection.
+	imputer := AISimpleImputer constant: 10.
+	imputer fit: collection.
 
-	self assert: (imputer transform: collection) equals: #( #( 7 2 5 6 ) #( 7 10 5 9 ) #( 10 2 10 6 ) ).
+	self assert: (imputer transform: collection) equals: #( #( 7 2 5 6 ) #( 7 10 5 9 ) #( 10 2 10 6 ) )
 ]
 
 { #category : #tests }
 AISimpleImputerTest >> testTransformMedian [
 
-	imputer
-		useAverage;
-		fit: collection.
+	imputer := AISimpleImputer median.
+	imputer fit: collection.
 
 	self assert: (imputer transform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
 ]
@@ -120,9 +117,8 @@ AISimpleImputerTest >> testTransformMedian [
 { #category : #tests }
 AISimpleImputerTest >> testTransformMostFrequent [
 
-	imputer
-		useMostFrequent;
-		fit: collection.
+	imputer := AISimpleImputer mostFrequent.
+	imputer fit: collection.
 
 	self assert: (imputer transform: collection) equals: #( #( 7 2 5 6 ) #( 7 2 5 9 ) #( 10 2 5 6 ) )
 ]
