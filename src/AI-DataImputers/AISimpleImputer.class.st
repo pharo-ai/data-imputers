@@ -176,11 +176,7 @@ AISimpleImputer >> transform: aCollection [
 	self ensureIs2D: aCollection.
 	self statistics ifNil: [ self error: '#fit: needs to be called before transforming.' ].
 
-	^ aCollection collect: [ :subcoll |
-		  subcoll withIndexCollect: [ :elem :index |
-			  elem = self missingValue
-				  ifTrue: [ statistics at: index ]
-				  ifFalse: [ elem ] ] ]
+	^ aCollection copyReplace: missingValue in2DCollectionBy: statistics
 ]
 
 { #category : #options }
