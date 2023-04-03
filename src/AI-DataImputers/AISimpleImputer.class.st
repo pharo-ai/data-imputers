@@ -108,7 +108,7 @@ AISimpleImputer class >> mostFrequent [
 AISimpleImputer >> ensureIs2D: aCollection [
 
 	self assert: aCollection isCollection description: 'Imputer can only work on 2D collections.'.
-	aCollection do: [ :coll | self assert: coll isCollection description: 'Imputer can only work on 2D collections.' ]
+	aCollection do: [ :coll | self assert: (coll isString not and: [ coll isCollection ]) description: 'Imputer can only work on 2D collections.' ]
 ]
 
 { #category : #api }
