@@ -9,7 +9,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
-        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
+        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11, Pharo64-12 ]
         config: [ .smalltalk.ston, .smalltalkDataFrame.ston ]
     name: ${{ matrix.smalltalk }} - ${{ matrix.config }}
     steps:
